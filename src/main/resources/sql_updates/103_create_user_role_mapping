@@ -1,0 +1,6 @@
+CREATE TABLE user_role_mapping(
+role_map_id SERIAL PRIMARY KEY,
+user_id int REFERENCES user_info(user_id),
+role_id int REFERENCES user_role(role_id),
+created_time VARCHAR(255) NOT NULL
+);

@@ -1,0 +1,22 @@
+.loginHeading {
+    text-align: center;
+    color: darkcyan;
+}
+
+.loginDiv {
+    margin-top: 2%;
+}
+
+.loginSignUpButton {
+    background: darkcyan;
+    color: white;
+    margin-bottom: 3%;
+}
+
+.loginImage {
+    text-align: center;
+}
+
+.loginSignupMsg{
+   padding-top: 1%;
+}
