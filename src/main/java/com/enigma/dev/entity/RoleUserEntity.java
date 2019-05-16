@@ -17,15 +17,11 @@ public class RoleUserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    @MapsId
-    private UserEntity userEntity ;
+    @Column(name = "user_id")
+    private int userId ;
 
-    @OneToOne
-    @JoinColumn(name = "role_id")
-    @MapsId
-    private RoleEntity roleEntity;
+    @Column(name = "role_id")
+    private int roleId;
 
     @Column(name = "created_time")
     @Size(max = 255)

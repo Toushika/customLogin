@@ -21,6 +21,11 @@ public class HomeController {
     private UserService userService;
 
     @GetMapping("/")
+    public String index() {
+        return "welcome";
+    }
+
+    @GetMapping("/login")
     public String login() {
         return "login";
     }
@@ -35,6 +40,13 @@ public class HomeController {
         LOGGER.info("HomeController :: saveUserInfo :: user :: " + user.toString());
         userService.saveUserInfo(user);
         redirectAttributes.addFlashAttribute("message","you have signed up successfully.please login");
+        return new RedirectView("/login");
+    }
+
+    @PostMapping("/loggedIn")
+    public RedirectView loggedIn(@ModelAttribute User user, RedirectAttributes redirectAttributes ) {
+        System.out.println("Logged in user Email:: " + user.getUserEmail());
+        System.out.println("Logged in user password:: " + user.getUserPassword());
         return new RedirectView("/");
     }
 }

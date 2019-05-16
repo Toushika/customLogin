@@ -7,6 +7,7 @@ import com.enigma.dev.model.User;
 import com.enigma.dev.repositories.RoleMapRepository;
 import com.enigma.dev.repositories.RoleRepository;
 import com.enigma.dev.repositories.UserRepositories;
+import com.enigma.dev.role.Role;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,15 +44,11 @@ public class UserService {
         String currentDate = dateFormat.format(date);
         userEntity.setCreatedTime(currentDate);
         userRepositories.save(userEntity);
-        RoleEntity roleEntity = new RoleEntity();
-        roleEntity.setRoleName("user");
-        roleEntity.setCreatedTime(currentDate);
-        roleRepository.save(roleEntity);
-        LOGGER.info("RoleEntity:: "+roleEntity.getId());
+        RoleEntity roleEntity = roleRepository.findByRoleName(Role.USER.name());
 
         RoleUserEntity roleUserEntity  = new RoleUserEntity() ;
-        roleUserEntity.setRoleEntity(roleEntity);
-        roleUserEntity.setUserEntity(userEntity);
+        roleUserEntity.setUserId(userEntity.getId());
+        roleUserEntity.setRoleId(roleEntity.getId());
         roleUserEntity.setCreatedTime(currentDate);
         roleMapRepository.save(roleUserEntity);
         LOGGER.info("UserService:: saveUserInfo:: UserEntity :: " + userEntity.toString());

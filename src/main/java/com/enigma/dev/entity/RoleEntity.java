@@ -27,8 +27,4 @@ public class RoleEntity {
     @Size(max = 255)
     @NotNull
     private String createdTime;
-
-    @OneToOne(mappedBy = "roleEntity")
-    private RoleUserEntity roleUserEntity;
-
 }

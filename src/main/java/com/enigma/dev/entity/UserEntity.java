@@ -54,7 +54,4 @@ public class UserEntity {
     @Size(max = 255)
     @NotNull
     private String createdTime;
-
-    @OneToOne(mappedBy = "userEntity")
-    private RoleUserEntity roleUserEntity;
 }
